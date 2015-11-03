@@ -13,8 +13,8 @@ angular.module('duelosApp')
 		$http.get('/posiciones').then(callback);
 	}
 	
-	this.obtenerEstadisticasPersonajeSeleccionado = function(jugador, personaje,callback){
-		$http.get('/estadisticas/' + jugador.id + '/' + personaje.id ).then(callback);
+	this.obtenerEstadisticasPersonajeSeleccionado = function(idJugador, idPersonaje,callback){
+		$http.get('/estadisticas/' + idJugador + '/' + idPersonaje).then(callback);
 	}
 	
 	

@@ -1,66 +1,69 @@
 'use strict';
 var app = angular.module('duelosApp')
-app.controller('DatosPersonajeController',function ($scope, DuelosService) {
-	$scope.posicionesDuelos = {};
-    $scope.obtenerPosiciones = function(){
+app.controller('DatosPersonajeController',function (DuelosService) {
+	var self = this;
+	this.posicionesDuelos = {};
+    this.obtenerPosiciones = function(){
     	DuelosService.obtenerPosiciones(
     		function(data) {
-    			$scope.posicionesDuelos = data.data;
+    			self.posicionesDuelos = data.data;
     		}
     	);
     }
-    $scope.obtenerPosiciones();
+    this.obtenerPosiciones();
     
     
-    $scope.personajes = {};
-    $scope.obtenerPersonajes = function(){
+    this.personajes = {};
+    this.obtenerPersonajes = function(){
     	DuelosService.obtenerPersonajes(
     		function(data) {
-    			$scope.personajes = data.data;
+    			self.personajes = data.data;
     		}
     	);
     }
-    $scope.obtenerPersonajes();
-    $scope.jugadorSeleccionado = {id:'1'};
+    this.obtenerPersonajes();
+    this.jugadorSeleccionado = {id:'1'};
     
-    $scope.estadisticasPersonajeSeleccionado = {};
+    this.estadisticasPersonajeSeleccionado = {};
     
-	$scope.rivalElegido = null;
-	$scope.rivales = null;
-		//$scope.datos.rivalesPosibles
+	this.rivalElegido = null;
+	this.rivales = null;
+		//this.datos.rivalesPosibles
 	
-	$scope.personajeSeleccionado = {};
-	$scope.hayUnPersonajeSeleccionado = false;
-	//$scope.selectedmodal = "#mrXModal";
-	$scope.seleccionarPersonaje = function(personaje) { 
-        $scope.personajeSeleccionado = personaje;
-        $scope.hayUnPersonajeSeleccionado = true;
-        $scope.obtenerEstadisticasPersonajeSeleccionado();
-        //$scope.buscarRival($scope.personajeSeleccionado);
-        //$scope.selected = "#encontreRivalModal";
+	this.personajeSeleccionado = {};
+	this.hayUnPersonajeSeleccionado = false;
+	//this.selectedmodal = "#mrXModal";
+	this.seleccionarPersonaje = function(personaje) { 
+        self.personajeSeleccionado = personaje;
+        self.hayUnPersonajeSeleccionado = true;
+        self.obtenerEstadisticasPersonajeSeleccionado();
+        //this.buscarRival(this.personajeSeleccionado);
+        //this.selected = "#encontreRivalModal";
     };
     
     
-    $scope.obtenerEstadisticasPersonajeSeleccionado = function(){
+    this.obtenerEstadisticasPersonajeSeleccionado = function(){
+    	alert('Soy el j' + self.jugadorSeleccionado.id);
+    	alert('Soy el p' + self.personajeSeleccionado.id);
     	DuelosService.obtenerEstadisticasPersonajeSeleccionado(
-    			$scope.jugadorSeleccionado.id,
-    			$scope.personajeSeleccionado.id,
+    			self.jugadorSeleccionado.id,
+    			self.personajeSeleccionado.id,
         		function(data) {
-        			$scope.estadisticasPersonajeSeleccionado = data.data;
+        			self.estadisticasPersonajeSeleccionado = data.data;
         		}
         	);
     }
     
     
-    $scope.darPersonaje = function(jugador){
+    this.darPersonaje = function(jugador){
     	return jugador.personajes;
     }
     
-    $scope.personajes = {};
-    $scope.obtenerPersonajes = function(){
+    this.personajes = {};
+    this.obtenerPersonajes = function(){
     	DuelosService.obtenerPersonajes(
     		function(data) {
-    			$scope.personajes = data;
+    			self.personajes = data;
     		}
     	);
     }
@@ -70,7 +73,7 @@ app.controller('DatosPersonajeController',function ($scope, DuelosService) {
      * USE FOR EN FORS porque perdi bocha de tiempo usando map y filter y no los hice andar
      */
 
-    $scope.agregarSiCumple = function (personajeSel,rivalesPosibles,arrayPersonajes){
+    this.agregarSiCumple = function (personajeSel,rivalesPosibles,arrayPersonajes){
     	for (var i = 0; i < arrayPersonajes.length; i++){
     		if (
     			personajeSel.estadisticas.Puntaje ==
@@ -81,12 +84,12 @@ app.controller('DatosPersonajeController',function ($scope, DuelosService) {
     	}
     }
     
-//    $scope.textoDelServicePostaPrueba = {};
-//    $scope.obtenerTextoDelServicePostaPrueba = function(){
+//    this.textoDelServicePostaPrueba = {};
+//    this.obtenerTextoDelServicePostaPrueba = function(){
 //    	
 //    	DuelosService.obtenerDatos(
 //    		function(data) {
-//    			$scope.textoDelServicePostaPrueba = data.data;
+//    			this.textoDelServicePostaPrueba = data.data;
 //    			
 //    		}
 //    	);
@@ -94,18 +97,18 @@ app.controller('DatosPersonajeController',function ($scope, DuelosService) {
 //    }
     
     
-    $scope.buscarRival = function(personajeSel) {
+    this.buscarRival = function(personajeSel) {
     	var rivalesPosibles = [];
-    	for (var i = 0; i < $scope.rivales.length; i++)
+    	for (var i = 0; i < self.rivales.length; i++)
     	{
-    		$scope.agregarSiCumple(personajeSel,rivalesPosibles,$scope.rivales[i].personajes)
+    		self.agregarSiCumple(personajeSel,rivalesPosibles,self.rivales[i].personajes)
     	}
     	if (rivalesPosibles.length > 0){
-    		$scope.rivalElegido = rivalesPosibles[0];
-    		$scope.selectedmodal = "#encontreRivalModal";
+    		self.rivalElegido = rivalesPosibles[0];
+    		self.selectedmodal = "#encontreRivalModal";
     	}
     	else {
-    		$scope.selectedmodal = "#mrXModal";
+    		self.selectedmodal = "#mrXModal";
     	}
     };
 });
