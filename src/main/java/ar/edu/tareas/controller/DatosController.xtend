@@ -45,10 +45,11 @@ class DatosController {
 	}
 	
 	@Get('/estadisticas')
-	def Result estadisticas(Integer idJugador, Integer idPersonaje){
-		val ret = appModel.datosDeEstadisticas(idJugador,idPersonaje)
+	def Result estadisticas(){
+		val ret = //appModel.datosDeEstadisticas()
+		//Integer idJugador, Integer idPersonaje
 		//RepoTareas.instance.allInstances
-		//#["Algun dato","Otro dato mas","Un tercer dato"]
+		#["Algun dato","Otro dato mas","Un tercer dato"]
 		response.contentType = ContentType.APPLICATION_JSON
 		ok(ret.toJson)
 	}

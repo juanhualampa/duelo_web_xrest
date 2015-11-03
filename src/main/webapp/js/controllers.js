@@ -12,14 +12,14 @@ app.controller('DatosPersonajeController',function ($scope, DuelosService) {
     }
     $scope.obtenerPosiciones();
 	
-    $scope.estadisticasPersonajeSeleccionado = {};
-    $scope.obtenerEstadisticasPersonajeSeleccionado = function(){
-    	DuelosService.obtenerEstadisticasPersonajeSeleccionado(
-        		function(data) {
-        			$scope.estadisticasPersonajeSeleccionado = data.data;
-        		}
-        	);
-    }
+//    $scope.estadisticasPersonajeSeleccionado = {};
+//    $scope.obtenerEstadisticasPersonajeSeleccionado = function(){
+//    	DuelosService.obtenerEstadisticasPersonajeSeleccionado(
+//        		function(data) {
+//        			$scope.estadisticasPersonajeSeleccionado = data.data;
+//        		}
+//        	);
+//    }
 	
 	$scope.jugadorSeleccionado = $scope.datos.jugadorSeleccionado;
 	$scope.personajeSeleccionado = {};
@@ -32,14 +32,24 @@ app.controller('DatosPersonajeController',function ($scope, DuelosService) {
 	$scope.seleccionarPersonaje = function(personaje) { 
         $scope.personajeSeleccionado = personaje;
         $scope.hayUnPersonajeSeleccionado = true;
-        $scope.obtenerEstadisticasPersonajeSeleccionado($scope.personajeSeleccionado.id);
+        //$scope.obtenerEstadisticasPersonajeSeleccionado($scope.personajeSeleccionado.id);
         $scope.buscarRival($scope.personajeSeleccionado);
-        //$scope.selectedº = "#encontreRivalModal";
+        //$scope.selected = "#encontreRivalModal";
     };
     
     $scope.darPersonaje = function(jugador){
     	return jugador.personajes;
     }
+    
+    $scope.personajes = {};
+    $scope.obtenerPersonajes = function(){
+    	DuelosService.obtenerPersonajes(
+    		function(data) {
+    			$scope.personajes = data;
+    		}
+    	);
+    }
+    
     
     /*
      * USE FOR EN FORS porque perdi bocha de tiempo usando map y filter y no los hice andar

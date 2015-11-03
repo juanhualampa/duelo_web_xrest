@@ -5,8 +5,8 @@ angular.module('duelosApp')
 //		//LO HACE
 //	}
 	
-	this.obtenerEstadisticasPersonajeSeleccionado = function(callback){
-		$http.get('/estadisticas').then(callback);
+	this.obtenerPersonajes = function(callback){
+		$http.get('/personajes').then(callback);
 	}
 	
 	this.obtenerPosiciones = function(callback){
