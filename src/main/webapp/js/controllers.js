@@ -1,7 +1,6 @@
 'use strict';
 var app = angular.module('duelosApp')
 app.controller('DatosPersonajeController',function ($scope, DuelosService) {
-	$scope.datos = DuelosService.datosDelJuego();
 	$scope.posicionesDuelos = {};
     $scope.obtenerPosiciones = function(){
     	DuelosService.obtenerPosiciones(
@@ -11,31 +10,47 @@ app.controller('DatosPersonajeController',function ($scope, DuelosService) {
     	);
     }
     $scope.obtenerPosiciones();
-	
-//    $scope.estadisticasPersonajeSeleccionado = {};
-//    $scope.obtenerEstadisticasPersonajeSeleccionado = function(){
-//    	DuelosService.obtenerEstadisticasPersonajeSeleccionado(
-//        		function(data) {
-//        			$scope.estadisticasPersonajeSeleccionado = data.data;
-//        		}
-//        	);
-//    }
-	
-	$scope.jugadorSeleccionado = $scope.datos.jugadorSeleccionado;
-	$scope.personajeSeleccionado = {};
-	
+    
+    
+    $scope.personajes = {};
+    $scope.obtenerPersonajes = function(){
+    	DuelosService.obtenerPersonajes(
+    		function(data) {
+    			$scope.personajes = data.data;
+    		}
+    	);
+    }
+    $scope.obtenerPersonajes();
+    $scope.jugadorSeleccionado = {id:'1'};
+    
+    $scope.estadisticasPersonajeSeleccionado = {};
+    
 	$scope.rivalElegido = null;
-	$scope.rivales = $scope.datos.rivalesPosibles
+	$scope.rivales = null;
+		//$scope.datos.rivalesPosibles
 	
+	$scope.personajeSeleccionado = {};
 	$scope.hayUnPersonajeSeleccionado = false;
 	//$scope.selectedmodal = "#mrXModal";
 	$scope.seleccionarPersonaje = function(personaje) { 
         $scope.personajeSeleccionado = personaje;
         $scope.hayUnPersonajeSeleccionado = true;
-        //$scope.obtenerEstadisticasPersonajeSeleccionado($scope.personajeSeleccionado.id);
-        $scope.buscarRival($scope.personajeSeleccionado);
+        $scope.obtenerEstadisticasPersonajeSeleccionado();
+        //$scope.buscarRival($scope.personajeSeleccionado);
         //$scope.selected = "#encontreRivalModal";
     };
+    
+    
+    $scope.obtenerEstadisticasPersonajeSeleccionado = function(){
+    	DuelosService.obtenerEstadisticasPersonajeSeleccionado(
+    			$scope.jugadorSeleccionado.id,
+    			$scope.personajeSeleccionado.id,
+        		function(data) {
+        			$scope.estadisticasPersonajeSeleccionado = data.data;
+        		}
+        	);
+    }
+    
     
     $scope.darPersonaje = function(jugador){
     	return jugador.personajes;
