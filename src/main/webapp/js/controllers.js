@@ -43,8 +43,6 @@ app.controller('DatosPersonajeController',function (DuelosService) {
     
     
     this.obtenerEstadisticasPersonajeSeleccionado = function(){
-    	alert('Soy el j' + self.jugadorSeleccionado.id);
-    	alert('Soy el p' + self.personajeSeleccionado.id);
     	DuelosService.obtenerEstadisticasPersonajeSeleccionado(
     			self.jugadorSeleccionado.id,
     			self.personajeSeleccionado.id,

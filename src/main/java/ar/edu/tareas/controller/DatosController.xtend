@@ -47,9 +47,6 @@ class DatosController {
 	@Get('/estadisticas/:idJugador/:idPersonaje')
 	def Result estadisticas(){
 		val ret = appModel.datosDeEstadisticas(Integer.valueOf(idJugador),Integer.valueOf(idPersonaje))
-		//Integer idJugador, Integer idPersonaje
-		//RepoTareas.instance.allInstances
-		//#["Algun dato","Otro dato mas","Un tercer dato"]
 		response.contentType = ContentType.APPLICATION_JSON
 		ok(ret.toJson)
 	}
