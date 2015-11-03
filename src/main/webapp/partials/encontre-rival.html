@@ -1,0 +1,55 @@
+<div class="modal fade" id="encontreRivalModal" tabindex="-1" role="dialog"
+	aria-labelledby="encontreRivalModal" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">Resultados del duelo</h4>
+			</div>
+			<div class="modal-body">
+				<form action="">
+					<div class="row">
+						<div class="col-xs-6 col-md-6 col-sm-6">
+							<div class="row">
+								<div class="col-xs-6 col-md-6 col-sm-6 table-responsive">
+									<table class="table table-striped">
+										<thead>
+											<img class="img-responsive" ng-src={{personajeSeleccionado.source}} id="itemDetail">
+										</thead>
+										<tbody>
+											<tr ng-repeat=" (key,value) in personajeSeleccionado.estadisticas">
+												<td>{{key}}</td>
+												<td>{{value}}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="col-xs-6 col-md-6 col-sm-6 table-responsive">
+									<table class="table table-striped">
+										<thead>
+											<img class="img-responsive" ng-src={{rivalElegido.source}} id="itemDetail">
+										</thead>
+										<tbody>
+											<tr	ng-repeat=" (key,value) in rivalElegido.estadisticas">
+												<td>{{key}}</td>
+												<td>{{value}}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-6 col-md-6 col-sm-6">
+							<span>TEXTO1</span>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal">MENSAJE</button>
+				<!--  <button type="button" class="btn btn-primary">Save changes</button> -->
+			</div>
+		</div>
+	</div>
+</div>

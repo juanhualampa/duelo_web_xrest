@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="duelosApp">
+<head>
+	<title>Pruebita Interfaces</title>
+	<meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1.0">
+
+	<script src="lib/angular.js"></script>
+	<link href="bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<script src="js/app.js"></script>  
+	<script src="js/service.js"></script>  
+	<script src="js/controllers.js"></script>  
+	<script src="js/directives.js"></script>
+</head>
+
+<body data-ng-controller="DatosPersonajeController">
+	<div class="container-fluid spanBorder">
+		<header>
+			<div align="center" >
+				<h1>Seleccione un personaje para el duelo</h1>
+			</div>		
+		</header>
+		
+		<div class="row spanBorder">
+			<div class="col-sm-6 col-xs-12 col-md-4 left-container">
+				<form class="well well-lg">
+					<div class="row" > 
+						<div class="col-xs-6 col-md-6 center-container" ng-repeat=" personaje in jugadorSeleccionado.personajes">
+							<img class="img-responsive btn" 
+							ng-src={{personaje.source}} 
+							ng-click= "seleccionarPersonaje(personaje)">
+						</div>					
+					</div>
+				</form>
+			</div>		
+			<selected-element-data ng-if="hayUnPersonajeSeleccionado"></selected-element-data>
+		</div>
+		
+		<footer-data></footer-data>
+	</div>
+
+	<script src="node_modules/underscore/underscore-min.js"></script>
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="bootstrap-3.3.5/js/bootstrap.min.js"></script>
+
+</body>
+</html>

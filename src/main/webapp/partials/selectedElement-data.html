@@ -1,0 +1,54 @@
+<div class="col-sm-6 col-xs-12 col-md-4 container-fluid center-container"
+		id="detailsPane">
+			<form class="well well-lg">
+				<h2 ng-bind= "personajeSeleccionado.nombre"></h2>
+				<img class="img-responsive" ng-src={{personajeSeleccionado.source}}
+					id="itemDetail">
+			</form>
+</div>
+
+<div class="col-xs-12 col-sm-6 col-md-4 container-fluid">
+
+	<form class="well well-lg">
+		<div class="row" ng-repeat=" (key,value) in estadisticasPersonajeSeleccionado"  >
+			<h3 align= "center" ng-bind="key"></h3>
+			<table >
+				<tr ng-repeat="val in value">
+					<td>
+						<h4 ng-bind="val"></h4>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</form>
+
+	<form class="well well-lg">
+		<div class="row">
+			<h3 align="center">JUGAR</h3>
+			<div class="form-group">
+				<button type="submit" class="btn btn-default form-control"
+					ng-repeat="posicion in posicionesDuelos" data-toggle="modal"
+					ng-click="modal" data-target="{{selectedmodal}}">{{posicion}}</button>
+			</div>
+		</div>
+	</form>
+
+	<form class="well well-lg">
+		<div class="row table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<h3 align="center">STATS</h3>
+				</thead>
+				<tbody>
+					<tr ng-repeat=" (key,value) in estadisticasPersonajeSeleccionado">
+						<td>{{key}}</td>
+						<td>{{value}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</form>
+</div>
+
+<encontre-rival-data></encontre-rival-data>
+<mr-x-data></mr-x-data>

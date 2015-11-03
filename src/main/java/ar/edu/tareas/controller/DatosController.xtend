@@ -28,7 +28,6 @@ class DatosController {
 		appModel = new RetarADueloAppModel(new HomeJuego())
 	}
 	
-	
 	@Get('/posiciones')
 	def Result datos(){
 		val ret = appModel.posiciones
@@ -38,9 +37,12 @@ class DatosController {
 		ok(ret.toJson)
 	}
 	
-	
 	@Get('/personajes')
-	
+	def Result personajes(){
+		val ret = appModel.homeJuego.personajes
+		response.contentType = ContentType.APPLICATION_JSON
+		ok(ret.toJson)
+	}
 	
 	@Get('/estadisticas')
 	def Result estadisticas(){
