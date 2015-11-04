@@ -11,6 +11,7 @@
 				<form action="">
 					<div class="row">
 						<div class="col-xs-6 col-md-6 col-sm-6">
+							<h3>{{datos.resultado[2]}} VS {{datos.resultado[3]}}</h3>
 							<div class="row">
 								<div class="col-xs-6 col-md-6 col-sm-6 table-responsive">
 									<table class="table table-striped">
@@ -41,13 +42,16 @@
 							</div>
 						</div>
 						<div class="col-xs-6 col-md-6 col-sm-6 resultado-duelo">
-							<span ng-bind="datos.resultado[2]"></span>
+						<!-- ng-show="prop=='Ganaste' -->
+							<h4>{{datos.resultado[5]}}</h4>
+							<br>
+							<h4>{{datos.resultado[6]}} A {{datos.resultado[7]}}</h4>
 						</div>
 					</div>
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary" data-dismiss="modal" style="background: red">MENSAJE</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal" style="background: red">{{datos.resultado[4]}}</button>
 				<!--  <button type="button" class="btn btn-primary">Save changes</button> -->
 			</div>
 		</div>
