@@ -21,7 +21,6 @@ angular.module('duelosApp')
 	}
 	
 	this.buscarAMrX = function(idJugador, idPersonaje,pos,callback){
-		alert("HOLA");	
 		$http.get('/buscarAMrX/' + idJugador + '/' + idPersonaje + '/' + pos).then(callback);
 	}
 	

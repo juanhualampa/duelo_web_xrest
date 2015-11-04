@@ -11,7 +11,6 @@ app.controller('DatosPersonajeController',function (DuelosService) {
     	);
     }
     this.obtenerPosiciones();
-    //this.posicionElegida = null;
     
     this.personajes = {};
     this.obtenerPersonajes = function(){
@@ -26,24 +25,8 @@ app.controller('DatosPersonajeController',function (DuelosService) {
     this.jugadorSeleccionado = {id:'1'};
     
     this.estadisticasPersonajeSeleccionado = {};
-    
-//	this.rivalElegido = null;
-//	
-//	
-//	this.rival = function(pos){
-//    	DuelosService.obtenerRival(
-//    			self.jugadorSeleccionado.id,
-//    			self.personajeSeleccionado.id,
-//    			pos,
-//        		function(data) {
-//        			self.rivalElegido = data.data;
-//        		}
-//        	);
-//        }
-	
-	
-	
-	this.personajeSeleccionado = {};
+
+    this.personajeSeleccionado = {};
 	this.hayUnPersonajeSeleccionado = false;
 	this.seleccionarPersonaje = function(personaje) { 
         self.personajeSeleccionado = personaje;
@@ -63,7 +46,6 @@ app.controller('DatosPersonajeController',function (DuelosService) {
     }
     
     this.buscarAMrX = function(){
-    	alert("LLEGUE AL CONTROLLER");
     	DuelosService.buscarAMrX(
     			self.jugadorSeleccionado.id,
     			self.personajeSeleccionado.id,
@@ -100,7 +82,6 @@ app.controller('DatosPersonajeController',function (DuelosService) {
         		},
         		function(data) {
         			self.resultado = data.data;
-        			alert(self.posicionElegida);
         			$('#mrXModal').modal('show');
         		}
         	);
