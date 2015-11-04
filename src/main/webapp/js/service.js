@@ -9,8 +9,8 @@ angular.module('duelosApp')
 		$http.get('/personajes').then(callback);
 	}
 	
-	this.iniciarDuelo = function(idJugador, idPersonaje,pos,callback){
-		$http.get('/iniciarDuelo/' + idJugador + '/' + idPersonaje + '/' + pos).then(callback);
+	this.iniciarDuelo = function(idJugador, idPersonaje,pos,callback,errorHandler){
+		$http.get('/iniciarDuelo/' + idJugador + '/' + idPersonaje + '/' + pos).then(callback,errorHandler);
 	}
 	this.obtenerPosiciones = function(callback){
 		$http.get('/posiciones').then(callback);
@@ -18,6 +18,11 @@ angular.module('duelosApp')
 	
 	this.obtenerEstadisticasPersonajeSeleccionado = function(idJugador, idPersonaje,callback){
 		$http.get('/estadisticas/' + idJugador + '/' + idPersonaje).then(callback);
+	}
+	
+	this.buscarAMrX = function(idJugador, idPersonaje,pos,callback){
+		alert("HOLA");	
+		$http.get('/buscarAMrX/' + idJugador + '/' + idPersonaje + '/' + pos).then(callback);
 	}
 	
 	

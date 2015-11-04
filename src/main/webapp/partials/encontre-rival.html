@@ -18,7 +18,7 @@
 											<img class="img-responsive" ng-src={{datos.personajeSeleccionado.source}} id="itemDetail">
 										</thead>
 										<tbody>
-											<tr ng-repeat=" (key,value) in datos.personajeSeleccionado.estadisticas">
+											<tr ng-repeat=" (key,value) in datos.resultado[0]">
 												<td>{{key}}</td>
 												<td>{{value}}</td>
 											</tr>
@@ -28,10 +28,10 @@
 								<div class="col-xs-6 col-md-6 col-sm-6 table-responsive">
 									<table class="table table-striped">
 										<thead>
-											<img class="img-responsive" ng-src={{datos.rivalElegido.source}} id="itemDetail">
+											<img class="img-responsive" ng-src={{datos.personajeSeleccionado.source}} id="itemDetail">
 										</thead>
 										<tbody>
-											<tr	ng-repeat=" (key,value) in datos.rivalElegido.estadisticas">
+											<tr	ng-repeat=" (key,value) in datos.resultado[1]">
 												<td>{{key}}</td>
 												<td>{{value}}</td>
 											</tr>
@@ -41,7 +41,7 @@
 							</div>
 						</div>
 						<div class="col-xs-6 col-md-6 col-sm-6">
-							<span>TEXTO1</span>
+							<span ng-bind="datos.resultado[2]"></span>
 						</div>
 					</div>
 				</form>

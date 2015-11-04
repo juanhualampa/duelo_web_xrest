@@ -11,7 +11,7 @@ app.controller('DatosPersonajeController',function (DuelosService) {
     	);
     }
     this.obtenerPosiciones();
-    
+    //this.posicionElegida = null;
     
     this.personajes = {};
     this.obtenerPersonajes = function(){
@@ -62,6 +62,18 @@ app.controller('DatosPersonajeController',function (DuelosService) {
         	);
     }
     
+    this.buscarAMrX = function(){
+    	alert("LLEGUE AL CONTROLLER");
+    	DuelosService.buscarAMrX(
+    			self.jugadorSeleccionado.id,
+    			self.personajeSeleccionado.id,
+    			self.posicionElegida,
+        		function(data) {
+        			self.estadisticasPersonajeSeleccionado = data.data;
+        		}
+        	);
+    }
+    
     
     this.darPersonaje = function(jugador){
     	return jugador.personajes;
@@ -77,13 +89,19 @@ app.controller('DatosPersonajeController',function (DuelosService) {
     }
     
     this.iniciarDuelo = function(pos) {
+    	self.posicionElegida = pos;
     	DuelosService.iniciarDuelo(
     			self.jugadorSeleccionado.id,
     			self.personajeSeleccionado.id,
-    			pos,
+    			self.posicionElegida,
         		function(data) {
         			self.resultado = data.data;
-        			alert(self.resultado);
+        			$('#encontreRivalModal').modal('show');
+        		},
+        		function(data) {
+        			self.resultado = data.data;
+        			alert(self.posicionElegida);
+        			$('#mrXModal').modal('show');
         		}
         	);
     }
