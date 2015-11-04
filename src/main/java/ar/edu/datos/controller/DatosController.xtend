@@ -7,9 +7,9 @@ import org.uqbar.xtrest.api.annotation.Get
 import org.uqbar.xtrest.http.ContentType
 import org.uqbar.xtrest.json.JSONUtils
 import homes.HomeJuego
-import appModels.RetarADueloAppModel
 import domain.NoHayOponenteException
 import ar.edu.datos.xtrest.JSONPropertyUtils
+import ar.edu.datos.appModels.RetarADueloAppModel
 
 @Controller
 class DatosController {
@@ -57,7 +57,6 @@ class DatosController {
 		} catch (NoHayOponenteException e) {
 			badRequest("No hay rival para vos");
 		}
-
 	}
 
 	@Get('/buscarAMrX/:idJugador/:idPersonaje/:pos')
