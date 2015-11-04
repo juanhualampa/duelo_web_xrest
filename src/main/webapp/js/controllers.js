@@ -51,7 +51,8 @@ app.controller('DatosPersonajeController',function (DuelosService) {
     			self.personajeSeleccionado.id,
     			self.posicionElegida,
         		function(data) {
-        			self.estadisticasPersonajeSeleccionado = data.data;
+    				self.resultado = data.data;
+        			$('#encontreRivalModal').modal('show');
         		}
         	);
     }

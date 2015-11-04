@@ -60,7 +60,7 @@ class DatosController {
 			response.contentType = ContentType.APPLICATION_JSON
 			ok(duelo.toJson)
 		} catch (NoHayOponenteException e) {
-			notFound("No hay rival para vos ");
+			badRequest("No hay rival para vos ");
 		}
 
 	}
