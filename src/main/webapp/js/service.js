@@ -9,6 +9,9 @@ angular.module('duelosApp')
 		$http.get('/personajes').then(callback);
 	}
 	
+	this.iniciarDuelo = function(idJugador, idPersonaje,pos,callback){
+		$http.get('/iniciarDuelo/' + idJugador + '/' + idPersonaje + '/' + pos).then(callback);
+	}
 	this.obtenerPosiciones = function(callback){
 		$http.get('/posiciones').then(callback);
 	}

@@ -12,11 +12,15 @@ import ar.edu.tareas.repos.RepoDatos
 import domain.Descripcion
 import homes.HomeJuego
 import appModels.RetarADueloAppModel
+import org.uqbar.commons.model.UserException
+import domain.NoHayOponenteException
+import ar.edu.tareas.xtrest.JSONPropertyUtils
 
 @Controller
 class DatosController {
 	
 	extension JSONUtils = new JSONUtils
+	extension JSONPropertyUtils = new JSONPropertyUtils
 	
 	def static void main(String[] args){
 		XTRest.start(DatosController,9000)
@@ -31,8 +35,6 @@ class DatosController {
 	@Get('/posiciones')
 	def Result datos(){
 		val ret = appModel.posiciones
-		//RepoTareas.instance.allInstances
-		//#["Algun dato","Otro dato mas","Un tercer dato"]
 		response.contentType = ContentType.APPLICATION_JSON
 		ok(ret.toJson)
 	}
@@ -42,7 +44,7 @@ class DatosController {
 		val ret = appModel.homeJuego.personajes
 		response.contentType = ContentType.APPLICATION_JSON
 		ok(ret.toJson)
-	}
+	}	
 	
 	@Get('/estadisticas/:idJugador/:idPersonaje')
 	def Result estadisticas(){
@@ -51,6 +53,17 @@ class DatosController {
 		ok(ret.toJson)
 	}
 	
+	@Get('/iniciarDuelo/:idJugador/:idPersonaje/:pos')
+	def Result rivalesPara(){
+		val duelo = appModel.iniciarDuelo(Integer.valueOf(idJugador),Integer.valueOf(idPersonaje),pos)
+		response.contentType = ContentType.APPLICATION_JSON
+		try {
+			ok(duelo.toJson)
+		} catch (NoHayOponenteException e) {
+			notFound("No hay rival para vos " );
+		}
+		
+	}
 	
 	
 }

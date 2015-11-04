@@ -21,24 +21,34 @@ app.controller('DatosPersonajeController',function (DuelosService) {
     		}
     	);
     }
+    
     this.obtenerPersonajes();
     this.jugadorSeleccionado = {id:'1'};
     
     this.estadisticasPersonajeSeleccionado = {};
     
-	this.rivalElegido = null;
-	this.rivales = null;
-		//this.datos.rivalesPosibles
+//	this.rivalElegido = null;
+//	
+//	
+//	this.rival = function(pos){
+//    	DuelosService.obtenerRival(
+//    			self.jugadorSeleccionado.id,
+//    			self.personajeSeleccionado.id,
+//    			pos,
+//        		function(data) {
+//        			self.rivalElegido = data.data;
+//        		}
+//        	);
+//        }
+	
+	
 	
 	this.personajeSeleccionado = {};
 	this.hayUnPersonajeSeleccionado = false;
-	//this.selectedmodal = "#mrXModal";
 	this.seleccionarPersonaje = function(personaje) { 
         self.personajeSeleccionado = personaje;
         self.hayUnPersonajeSeleccionado = true;
         self.obtenerEstadisticasPersonajeSeleccionado();
-        //this.buscarRival(this.personajeSeleccionado);
-        //this.selected = "#encontreRivalModal";
     };
     
     
@@ -61,53 +71,21 @@ app.controller('DatosPersonajeController',function (DuelosService) {
     this.obtenerPersonajes = function(){
     	DuelosService.obtenerPersonajes(
     		function(data) {
-    			self.personajes = data;
+    			self.personajes = data.data;
     		}
     	);
     }
     
-    
-    /*
-     * USE FOR EN FORS porque perdi bocha de tiempo usando map y filter y no los hice andar
-     */
-
-    this.agregarSiCumple = function (personajeSel,rivalesPosibles,arrayPersonajes){
-    	for (var i = 0; i < arrayPersonajes.length; i++){
-    		if (
-    			personajeSel.estadisticas.Puntaje ==
-    			arrayPersonajes[i].estadisticas.Puntaje	)
-    			{
-    			rivalesPosibles.push(arrayPersonajes[i]);
-    			}
-    	}
+    this.iniciarDuelo = function(pos) {
+    	DuelosService.iniciarDuelo(
+    			self.jugadorSeleccionado.id,
+    			self.personajeSeleccionado.id,
+    			pos,
+        		function(data) {
+        			self.resultado = data.data;
+        			alert(self.resultado);
+        		}
+        	);
     }
-    
-//    this.textoDelServicePostaPrueba = {};
-//    this.obtenerTextoDelServicePostaPrueba = function(){
-//    	
-//    	DuelosService.obtenerDatos(
-//    		function(data) {
-//    			this.textoDelServicePostaPrueba = data.data;
-//    			
-//    		}
-//    	);
-//    	
-//    }
-    
-    
-    this.buscarRival = function(personajeSel) {
-    	var rivalesPosibles = [];
-    	for (var i = 0; i < self.rivales.length; i++)
-    	{
-    		self.agregarSiCumple(personajeSel,rivalesPosibles,self.rivales[i].personajes)
-    	}
-    	if (rivalesPosibles.length > 0){
-    		self.rivalElegido = rivalesPosibles[0];
-    		self.selectedmodal = "#encontreRivalModal";
-    	}
-    	else {
-    		self.selectedmodal = "#mrXModal";
-    	}
-    };
 });
   
