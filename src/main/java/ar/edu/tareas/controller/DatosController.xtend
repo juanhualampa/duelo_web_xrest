@@ -55,9 +55,9 @@ class DatosController {
 	
 	@Get('/iniciarDuelo/:idJugador/:idPersonaje/:pos')
 	def Result rivalesPara(){
-		val duelo = appModel.iniciarDuelo(Integer.valueOf(idJugador),Integer.valueOf(idPersonaje),pos)
-		response.contentType = ContentType.APPLICATION_JSON
 		try {
+			val duelo = appModel.iniciarDuelo(Integer.valueOf(idJugador),Integer.valueOf(idPersonaje),pos)
+			response.contentType = ContentType.APPLICATION_JSON
 			ok(duelo.toJson)
 		} catch (NoHayOponenteException e) {
 			notFound("No hay rival para vos " );
