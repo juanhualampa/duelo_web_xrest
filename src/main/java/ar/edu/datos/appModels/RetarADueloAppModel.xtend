@@ -33,7 +33,7 @@ class RetarADueloAppModel {
 	}
 	
 	def jugadores(){
-		this.homeJuego.juego.jugadores
+		juego.jugadores
 	}
 		
 	def datosDeEstadisticas(Integer idJugador, Integer idPersonaje){
