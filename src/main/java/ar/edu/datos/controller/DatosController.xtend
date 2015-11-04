@@ -9,7 +9,7 @@ import org.uqbar.xtrest.json.JSONUtils
 import homes.HomeJuego
 import domain.NoHayOponenteException
 import ar.edu.datos.xtrest.JSONPropertyUtils
-import ar.edu.datos.appModels.RetarADueloAppModel
+import ar.edu.datos.appModels.DatosDueloAppModel
 
 @Controller
 class DatosController {
@@ -21,10 +21,10 @@ class DatosController {
 		XTRest.start(DatosController, 9000)
 	}
 
-	RetarADueloAppModel appModel
+	DatosDueloAppModel appModel
 
 	new() {
-		appModel = new RetarADueloAppModel(new HomeJuego())
+		appModel = new DatosDueloAppModel(new HomeJuego())
 	}
 
 	@Get('/posiciones')
