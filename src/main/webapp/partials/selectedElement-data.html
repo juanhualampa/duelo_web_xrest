@@ -2,18 +2,16 @@
 	class="col-sm-6 col-xs-12 col-md-4 container-fluid center-container"
 	id="detailsPane">
 	<form class="well well-lg">
-		<h2 ng-bind="datos.personajeSeleccionado.nombre"></h2>
-		<img class="img-responsive"
-			ng-src={{datos.personajeSeleccionado.source}} id="itemDetail">
+		<h1 ng-bind="datos.personajeSeleccionado.nombre" class="header"></h1>
+		<img class="img-responsive" ng-src={{datos.personajeSeleccionado.source}} id="itemDetail">
 	</form>
 </div>
 
 <div class="col-xs-12 col-sm-6 col-md-4 container-fluid">
 
 	<form class="well well-lg">
-	
-		<caracteristicas abilities="datos.personajeSeleccionado.especialidades" top-title="Especialidades" ></caracteristicas>
-		<caracteristicas abilities="datos.personajeSeleccionado.debilidades" top-title="Debilidades" ></caracteristicas>
+		<caracteristicas abilities="datos.personajeSeleccionado.especialidades" top-title="Especialidades"></caracteristicas>
+		<caracteristicas abilities="datos.personajeSeleccionado.debilidades" top-title="Debilidades"></caracteristicas>
 		<h3 align="center">Ubicacion Ideal</h3>
 		<div class="row" ng-bind="datos.personajeSeleccionado.ubicacionIdeal">
 			<table>
@@ -24,8 +22,6 @@
 				</tr>
 			</table>
 		</div>
-
-
 	</form>
 
 	<form class="well well-lg">

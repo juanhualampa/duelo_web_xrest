@@ -1,13 +1,11 @@
 angular.module("duelosApp")
 
-
 .directive('footerData', function() {
 	  return {
 		  restrict: 'E',
 		  templateUrl: 'partials/footer-data.html'
 	  };
 	})
-	
 
 .directive('selectedElementData', function() {
 	  return {
@@ -26,15 +24,7 @@ angular.module("duelosApp")
 		templateUrl: 'partials/caracteristicas.html'
 	};
 })
-	
 
-.directive('mrXData', function() {
-	  return {
-		  restrict: 'E',
-		  templateUrl: 'partials/mrX.html'
-	  };
-	})	
-	
 .directive('encontreRivalData', function() {
 	  return {
 	    templateUrl: 'partials/encontre-rival.html'

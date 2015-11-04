@@ -1,48 +1,49 @@
 <!DOCTYPE html>
 <html lang="es" ng-app="duelosApp">
-<head>
-	<title>Pruebita Interfaces</title>
-	<meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1.0">
-
-	<script src="lib/angular.js"></script>
-	<link href="bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" media="screen">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	
-	<script src="js/app.js"></script>  
-	<script src="js/service.js"></script>  
-	<script src="js/controllers.js"></script>  
-	<script src="js/directives.js"></script>
-</head>
-
-<body data-ng-controller="DatosPersonajeController as datos">
-	<div class="container-fluid spanBorder">
-		<header>
-			<div align="center" class="header">
-				<h1>Seleccione un personaje para el duelo</h1>
-			</div>		
-		</header>
+	<head>
+		<title>Pruebita Interfaces</title>
+		<meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1.0">
 		
-		<div class="row spanBorder">
-			<div class="col-sm-6 col-xs-12 col-md-4 left-container">
-				<form class="well well-lg">
-					<div class="row" > 
-						<div class="col-xs-6 col-md-6 center-container" ng-repeat=" personaje in datos.personajes">
-							<img class="img-responsive btn" 
-							ng-src={{personaje.source}} 
-							ng-click= "datos.seleccionarPersonaje(personaje)">
-						</div>					
-					</div>
-				</form>
-			</div>		
-			<selected-element-data ng-if="datos.hayUnPersonajeSeleccionado"></selected-element-data>
+		<!-- angular, jquery, bootstrap -->
+		<script src="lib/angular.js"></script>
+		<script src="lib/jquery.js"></script>
+		<link href="bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<script src="bootstrap-3.3.5/js/bootstrap.min.js"></script>
+		<script src="node_modules/underscore/underscore-min.js"></script>
+		
+		<!-- css -->
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		
+		<!-- nuestra aplicacion js -->
+		<script src="js/app.js"></script>  
+		<script src="js/service.js"></script>  
+		<script src="js/controllers.js"></script>  
+		<script src="js/directives.js"></script>
+	</head>
+
+	<body data-ng-controller="DatosPersonajeController as datos">
+		<div class="container-fluid spanBorder">
+			<header>
+				<div align="center" class="header">
+					<h1>Seleccione un personaje para el duelo</h1>
+				</div>		
+			</header>
+			
+			<div class="row spanBorder">
+				<div class="col-sm-6 col-xs-12 col-md-4 left-container">
+					<form class="well well-lg">
+						<div class="row" > 
+							<div class="col-xs-6 col-md-6 center-container" ng-repeat=" personaje in datos.personajes">
+								<img class="img-responsive btn"  ng-src={{personaje.source}} ng-click= "datos.seleccionarPersonaje(personaje)">
+							</div>					
+						</div>
+					</form>
+				</div>		
+				<selected-element-data ng-if="datos.hayUnPersonajeSeleccionado"></selected-element-data>
+			</div>
+			
+			<footer-data></footer-data>
 		</div>
-		
-		<footer-data></footer-data>
-	</div>
-
-	<script src="node_modules/underscore/underscore-min.js"></script>
-	<script src="lib/jquery.js"></script>
-	<script src="bootstrap-3.3.5/js/bootstrap.min.js"></script>
-
-</body>
+	
+	</body>
 </html>
