@@ -1,39 +1,57 @@
 .panelPersonaje {
-  height: 300px;
+	height: 300px;
 }
-.panelPersonaje .caption {
-  height: 80%;
-  background: #f0f0f0;
-  padding-bottom: 10px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.panelPersonaje .caption p {
-  overflow: auto;
-  height: 70%;
-  background: #e0e0e0;
-  padding-bottom: 10px;
 
-  width: 100%;
+.panelPersonaje .caption {
+	height: 80%;
+	background: #f0f0f0;
+	padding-bottom: 10px;
+	margin-left: auto;
+	margin-right: auto;
 }
+
+.panelPersonaje .caption p {
+	overflow: auto;
+	height: 70%;
+	background: #e0e0e0;
+	padding-bottom: 10px;
+	width: 100%;
+}
+
 .table-centered tr td, .table-centered tr th {
-  text-align: center;
+	text-align: center;
 }
+
 .table-centered tr td:nth-child(1) {
-  font-weight: bolder;
+	font-weight: bolder;
 }
 
 .row h2 {
-  padding-bottom: 19px;
-  border-bottom: 1px solid #e5e5e5;
+	padding-bottom: 19px;
+	border-bottom: 1px solid #e5e5e5;
 }
 
 .footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+	padding-top: 19px;
+	color: #777;
+	border-top: 1px solid #e5e5e5;
 }
 
 .container {
-  width: 1024px;
+	width: 1024px;
+}
+
+.resultado-duelo {
+	background-color: #5D7D00;
+	height: 400px;
+	width: 45%;
+	border-radius: 14px 14px 14px 14px;
+}
+
+.header {
+	background-color: #000000;
+}
+
+h1 {
+	color: #ffffff;
 }
