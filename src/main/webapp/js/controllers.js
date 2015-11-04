@@ -55,6 +55,7 @@ app.controller('DatosPersonajeController',function (DuelosService) {
         			$('#encontreRivalModal').modal('show');
         		}
         	);
+    	self.obtenerEstadisticasPersonajeSeleccionado();
     }
     
     
@@ -86,6 +87,7 @@ app.controller('DatosPersonajeController',function (DuelosService) {
         			$('#mrXModal').modal('show');
         		}
         	);
+    	self.obtenerEstadisticasPersonajeSeleccionado();
     }
 });
   

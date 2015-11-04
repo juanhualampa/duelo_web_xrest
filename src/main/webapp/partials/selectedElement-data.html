@@ -1,47 +1,31 @@
-<div class="col-sm-6 col-xs-12 col-md-4 container-fluid center-container" id="detailsPane">
+<div
+	class="col-sm-6 col-xs-12 col-md-4 container-fluid center-container"
+	id="detailsPane">
 	<form class="well well-lg">
-		<h2 ng-bind= "datos.personajeSeleccionado.nombre"></h2>
-		<img class="img-responsive" ng-src={{datos.personajeSeleccionado.source}} id="itemDetail">
+		<h2 ng-bind="datos.personajeSeleccionado.nombre"></h2>
+		<img class="img-responsive"
+			ng-src={{datos.personajeSeleccionado.source}} id="itemDetail">
 	</form>
 </div>
 
 <div class="col-xs-12 col-sm-6 col-md-4 container-fluid">
 
 	<form class="well well-lg">
-		<h3 align= "center" >ESPECIALIDADES</h3>
-		<div class="row" ng-repeat=" (key,value) in datos.personajeSeleccionado.especialidades"  >
+	
+		<caracteristicas abilities="datos.personajeSeleccionado.especialidades" top-title="Especialidades" ></caracteristicas>
+		<caracteristicas abilities="datos.personajeSeleccionado.debilidades" top-title="Debilidades" ></caracteristicas>
+		<h3 align="center">Ubicacion Ideal</h3>
+		<div class="row" ng-bind="datos.personajeSeleccionado.ubicacionIdeal">
 			<table>
-				<tr >
+				<tr>
 					<td>
 						<h4 ng-bind="value"></h4>
 					</td>
 				</tr>
 			</table>
 		</div>
-		
-		<h3 align= "center">DEBILIDADES</h3>
-		<div class="row" ng-repeat=" (key,value) in datos.personajeSeleccionado.debilidades"  >
-			<table>
-				<tr >
-					<td>
-						<h4 ng-bind="value"></h4>
-					</td>
-				</tr>
-			</table>
-		</div>
-		
-		<h3 align= "center">Ubicacion Ideal</h3>
-		<div class="row" ng-bind="datos.personajeSeleccionado.ubicacionIdeal"  >
-			<table>
-				<tr >
-					<td>
-						<h4 ng-bind="value"></h4>
-					</td>
-				</tr>
-			</table>
-		</div>
-		
-		
+
+
 	</form>
 
 	<form class="well well-lg">
@@ -50,7 +34,8 @@
 			<div class="form-group">
 				<button type="submit" class="btn btn-default form-control"
 					ng-repeat="posicion in datos.posicionesDuelos" data-toggle="modal"
-					ng-click="datos.iniciarDuelo(posicion)" data-target="{{datos.selectedmodal}}">{{posicion}}</button>
+					ng-click="datos.iniciarDuelo(posicion)"
+					data-target="{{datos.selectedmodal}}">{{posicion}}</button>
 			</div>
 		</div>
 	</form>

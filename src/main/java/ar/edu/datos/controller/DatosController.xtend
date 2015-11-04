@@ -1,20 +1,15 @@
-package ar.edu.tareas.controller
+package ar.edu.datos.controller
 
 import org.uqbar.xtrest.api.Result
 import org.uqbar.xtrest.api.XTRest
-import org.uqbar.xtrest.api.annotation.Body
 import org.uqbar.xtrest.api.annotation.Controller
 import org.uqbar.xtrest.api.annotation.Get
-import org.uqbar.xtrest.api.annotation.Put
 import org.uqbar.xtrest.http.ContentType
 import org.uqbar.xtrest.json.JSONUtils
-import ar.edu.tareas.repos.RepoDatos
-import domain.Descripcion
 import homes.HomeJuego
 import appModels.RetarADueloAppModel
-import org.uqbar.commons.model.UserException
 import domain.NoHayOponenteException
-import ar.edu.tareas.xtrest.JSONPropertyUtils
+import ar.edu.datos.xtrest.JSONPropertyUtils
 
 @Controller
 class DatosController {

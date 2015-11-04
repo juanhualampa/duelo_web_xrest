@@ -16,6 +16,18 @@ angular.module("duelosApp")
 	  };
 	})
 	
+.directive('caracteristicas', function() {
+	return {
+		restrict: 'E',
+		scope: {
+			abilities: "=",
+			topTitle: "@"
+		},
+		templateUrl: 'partials/caracteristicas.html'
+	};
+})
+	
+
 .directive('mrXData', function() {
 	  return {
 		  restrict: 'E',

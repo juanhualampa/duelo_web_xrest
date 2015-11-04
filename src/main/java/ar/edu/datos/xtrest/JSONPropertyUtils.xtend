@@ -1,4 +1,4 @@
-package ar.edu.tareas.xtrest
+package ar.edu.datos.xtrest
 
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
