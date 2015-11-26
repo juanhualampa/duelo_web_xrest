@@ -40,6 +40,20 @@ class DatosController {
 		response.contentType = ContentType.APPLICATION_JSON
 		ok(ret.toJson)
 	}
+	
+	@Get('/descripcion_personaje/:idJugador/:idPersonaje')
+	def Result descripcion(){
+		val ret = appModel.obtenerPersonaje(Integer.valueOf(idJugador), Integer.valueOf(idPersonaje)).caracteristicas
+		response.contentType = ContentType.APPLICATION_JSON
+		ok(ret.toJson)
+	}
+	
+	@Get('/nombre_personajes')
+	def Result nombresPersonajes(){
+		val ret = appModel.homeJuego.jugador.nombrePersonajes
+		response.contentType = ContentType.APPLICATION_JSON
+		ok(ret.toJson)
+	}
 
 	@Get('/estadisticas/:idJugador/:idPersonaje')
 	def Result estadisticas() {
