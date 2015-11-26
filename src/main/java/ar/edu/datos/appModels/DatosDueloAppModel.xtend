@@ -9,6 +9,7 @@ import homes.HomeJuego
 import java.util.HashMap
 import retador.Retador
 import duelos.Duelo
+import domain.Personaje
 
 @Accessors
 @Observable
@@ -93,6 +94,14 @@ class DatosDueloAppModel {
 	
 	def personajePor(Jugador jugador, Integer idPersonaje) {
 		jugador.estadisticasPersonajes.map[personaje].findFirst[id.equals(idPersonaje)]
+	}
+	
+	def caracteristicas(Personaje personaje) {
+		val propiedades = new HashMap<String, Object>();
+		propiedades.put("Especialidades",personaje.especialidades)
+		propiedades.put("Debilidades",personaje.debilidades)
+		propiedades.put("Mejor Posicion",personaje.ubicacionIdeal)
+		propiedades
 	}
 	
 }

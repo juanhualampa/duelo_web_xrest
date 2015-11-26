@@ -43,7 +43,7 @@ class DatosController {
 	
 	@Get('/descripcion_personaje/:idJugador/:idPersonaje')
 	def Result descripcion(){
-		val ret = appModel.obtenerPersonaje(Integer.valueOf(idJugador), Integer.valueOf(idPersonaje)).caracteristicas
+		val ret = appModel.caracteristicas(appModel.obtenerPersonaje(Integer.valueOf(idJugador), Integer.valueOf(idPersonaje)))
 		response.contentType = ContentType.APPLICATION_JSON
 		ok(ret.toJson)
 	}
