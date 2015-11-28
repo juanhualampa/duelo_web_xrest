@@ -43,7 +43,7 @@ class DatosController {
 	
 	@Get('/descripcion_personaje/:idJugador/:idPersonaje')
 	def Result descripcion(){
-		val ret = appModel.caracteristicas(appModel.obtenerPersonaje(Integer.valueOf(idJugador), Integer.valueOf(idPersonaje)))
+		val ret = appModel.caracteristicasDelPersonaje(appModel.obtenerPersonaje(Integer.valueOf(idJugador), Integer.valueOf(idPersonaje)))
 		response.contentType = ContentType.APPLICATION_JSON
 		ok(ret.toJson)
 	}
@@ -57,7 +57,7 @@ class DatosController {
 
 	@Get('/estadisticas/:idJugador/:idPersonaje')
 	def Result estadisticas() {
-		val ret = appModel.datosDeEstadisticas(Integer.valueOf(idJugador), Integer.valueOf(idPersonaje))
+		val ret = appModel.datosDeEstadisticas2(Integer.valueOf(idJugador), Integer.valueOf(idPersonaje))
 		response.contentType = ContentType.APPLICATION_JSON
 		ok(ret.toJson)
 	}

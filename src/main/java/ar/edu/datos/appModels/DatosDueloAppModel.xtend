@@ -6,7 +6,7 @@ import domain.Jugador
 import domain.Ubicacion
 import retador.Iniciador
 import homes.HomeJuego
-import java.util.HashMap
+import java.util.LinkedHashMap
 import retador.Retador
 import duelos.Duelo
 import domain.Personaje
@@ -41,8 +41,17 @@ class DatosDueloAppModel {
 		this.homeJuego.estadisticasDePersonajeSeleccionado(idJugador,idPersonaje).dameSusPropiedades
 	}
 	
+	def datosDeEstadisticas2(Integer idJugador, Integer idPersonaje){
+		this.homeJuego.estadisticasDePersonajeSeleccionado(idJugador,idPersonaje).minificadas
+	}
+	
+	def minificadas(EstadisticasPersonajes it) {
+		new EstadisticasMinificadas(vecesUsadoAntesDelDuelo,vecesQueGanoDuelo,vecesKills,
+			vecesDeads,vecesAssist,mejorUbicacion,calificacion.categoria)
+	}
+	
 	def dameSusPropiedades(EstadisticasPersonajes it) {
-		val propiedades = new HashMap<String, Object>();
+		val propiedades = new LinkedHashMap<String, Object>();
 		propiedades.put("Jugadas",vecesUsadoAntesDelDuelo)
 		propiedades.put("Ganadas",vecesQueGanoDuelo)
 		propiedades.put("Kills",vecesKills)
@@ -97,11 +106,38 @@ class DatosDueloAppModel {
 	}
 	
 	def caracteristicas(Personaje personaje) {
-		val propiedades = new HashMap<String, Object>();
+		val propiedades = new LinkedHashMap<String, Object>();
 		propiedades.put("Especialidades",personaje.especialidades)
 		propiedades.put("Debilidades",personaje.debilidades)
 		propiedades.put("Mejor Posicion",personaje.ubicacionIdeal)
 		propiedades
 	}
+	
+	def caracteristicasDelPersonaje(Personaje personaje){
+		personaje.caracteristicas
+	}
+	
+}
+
+@Accessors
+class EstadisticasMinificadas {
+	
+	int jugadas
+	int ganadas
+	int kills
+	int deads 
+	int assists
+	String mejorUbicacion
+	String puntaje
+	
+	new(int jugadas, int ganadas, int kills, int deads, int assists , Ubicacion mejorUbicacion, String puntaje) {
+		this.jugadas = jugadas
+		this.ganadas = ganadas
+		this.kills = kills
+		this.deads = deads
+		this.assists = assists
+		this.mejorUbicacion = String.valueOf(mejorUbicacion)
+		this.puntaje = puntaje
+	}	
 	
 }
