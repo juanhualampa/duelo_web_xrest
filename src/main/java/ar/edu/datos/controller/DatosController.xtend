@@ -48,9 +48,9 @@ class DatosController {
 		ok(ret.toJson)
 	}
 	
-	@Get('/nombre_personajes')
+	@Get('/datos_minimos_personajes')
 	def Result nombresPersonajes(){
-		val ret = appModel.homeJuego.jugador.nombrePersonajes
+		val ret = appModel.personajesMinificados
 		response.contentType = ContentType.APPLICATION_JSON
 		ok(ret.toJson)
 	}

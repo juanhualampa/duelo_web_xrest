@@ -10,6 +10,7 @@ import java.util.LinkedHashMap
 import retador.Retador
 import duelos.Duelo
 import domain.Personaje
+import java.util.List
 
 @Accessors
 @Observable
@@ -115,6 +116,26 @@ class DatosDueloAppModel {
 	
 	def caracteristicasDelPersonaje(Personaje personaje){
 		personaje.caracteristicas
+	}
+	
+	def personajesMinificados() {
+		this.homeJuego.jugador.estadisticasPersonajes.map[new PersonajesMinificados(it.personaje.nombreEid)]
+	}
+	
+	def nombreEid(Personaje it) {
+		new Pair(id,nombre)
+	}
+	
+}
+
+@Accessors
+class PersonajesMinificados {
+	
+	int id
+	String nombre
+	new(Pair<Integer, String> pair) {
+		this.id = pair.key
+		this.nombre = pair.value
 	}
 	
 }
