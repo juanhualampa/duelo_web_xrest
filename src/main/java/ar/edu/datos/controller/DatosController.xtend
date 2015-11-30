@@ -41,6 +41,13 @@ class DatosController {
 		ok(ret.toJson)
 	}
 	
+	@Get('/personajesBuscados/:idPersonaje')
+	def Result personajesBuscados(){
+	val ret = appModel.personajesMinificados.filter[it.nombre.contains(idPersonaje)]
+		response.contentType = ContentType.APPLICATION_JSON
+		ok(ret.toJson)
+	}
+	
 	@Get('/descripcion_personaje/:idJugador/:idPersonaje')
 	def Result descripcion(){
 		val ret = appModel.caracteristicasDelPersonaje(appModel.obtenerPersonaje(Integer.valueOf(idJugador), Integer.valueOf(idPersonaje)))
