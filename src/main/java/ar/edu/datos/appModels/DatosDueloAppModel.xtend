@@ -143,22 +143,22 @@ class PersonajesMinificados {
 @Accessors
 class EstadisticasMinificadas {
 	
-	int jugadas
-	int ganadas
-	int kills
-	int deads 
-	int assists
-	String mejorUbicacion
-	String puntaje
+	Pair<String,String> jugadas
+	Pair<String,String> ganadas
+	Pair<String,String> kills
+	Pair<String,String> deads 
+	Pair<String,String> assists
+	Pair<String,String> mejorUbicacion
+	Pair<String,String> puntaje
 	
 	new(int jugadas, int ganadas, int kills, int deads, int assists , Ubicacion mejorUbicacion, String puntaje) {
-		this.jugadas = jugadas
-		this.ganadas = ganadas
-		this.kills = kills
-		this.deads = deads
-		this.assists = assists
-		this.mejorUbicacion = String.valueOf(mejorUbicacion)
-		this.puntaje = puntaje
+		this.jugadas = new Pair("JUGADAS",String.valueOf(jugadas))
+		this.ganadas = new Pair("JUGADAS",String.valueOf(ganadas))
+		this.kills = new Pair("JUGADAS",String.valueOf(kills))
+		this.deads = new Pair("JUGADAS",String.valueOf(deads))
+		this.assists = new Pair("JUGADAS",String.valueOf(assists))
+		this.mejorUbicacion = new Pair("JUGADAS",String.valueOf(String.valueOf(mejorUbicacion).toLowerCase))
+		this.puntaje = new Pair("JUGADAS",String.valueOf(puntaje))
 	}	
 	
 }
