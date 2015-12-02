@@ -43,7 +43,20 @@ class DatosDueloAppModel {
 	}
 	
 	def datosDeEstadisticas2(Integer idJugador, Integer idPersonaje){
-		this.homeJuego.estadisticasDePersonajeSeleccionado(idJugador,idPersonaje).minificadas
+		this.homeJuego.estadisticasDePersonajeSeleccionado(idJugador,idPersonaje).minificadas2
+	}
+	
+	def minificadas2(EstadisticasPersonajes it) {
+		
+		
+		#[new DatosDeEstadisticas("JUGADAS",String.valueOf(vecesUsadoAntesDelDuelo)),
+		new DatosDeEstadisticas("JUGADAS",String.valueOf(vecesKills))
+		,new DatosDeEstadisticas("JUGADAS",String.valueOf(vecesDeads))
+		,new DatosDeEstadisticas("JUGADAS",String.valueOf(vecesAssist))
+		,new DatosDeEstadisticas("JUGADAS",String.valueOf(mejorUbicacion))
+		, new DatosDeEstadisticas("JUGADAS",String.valueOf(String.valueOf(calificacion.categoria).toLowerCase))]
+		
+		
 	}
 	
 	def minificadas(EstadisticasPersonajes it) {
@@ -122,6 +135,13 @@ class DatosDueloAppModel {
 		this.homeJuego.jugador.estadisticasPersonajes.map[new PersonajesMinificados(it.personaje.nombreEid)]
 	}
 	
+	
+	def estadisticasMinificadas(){
+		this.homeJuego.jugador.estadisticasPersonajes.map[new EstadisticasMinificadas(
+			vecesUsadoAntesDelDuelo,vecesQueGanoDuelo,vecesKills,vecesDeads,vecesAssist,mejorUbicacion,calificacion.categoria)
+		]
+	}
+	
 	def nombreEid(Personaje it) {
 		new Pair(id,nombre)
 	}
@@ -141,24 +161,37 @@ class PersonajesMinificados {
 }
 
 @Accessors
+class DatosDeEstadisticas{
+	
+	String valorDelCampo
+	
+	String nombreDelCampo
+	
+	new (String valorDelCampo, String nombreDelCampo){
+		this.valorDelCampo = valorDelCampo
+		this.nombreDelCampo = nombreDelCampo
+	}
+}
+
+@Accessors
 class EstadisticasMinificadas {
 	
-	Pair<String,String> jugadas
-	Pair<String,String> ganadas
-	Pair<String,String> kills
-	Pair<String,String> deads 
-	Pair<String,String> assists
-	Pair<String,String> mejorUbicacion
-	Pair<String,String> puntaje
+	DatosDeEstadisticas jugadas
+	DatosDeEstadisticas ganadas
+	DatosDeEstadisticas kills
+	DatosDeEstadisticas deads 
+	DatosDeEstadisticas assists
+	DatosDeEstadisticas mejorUbicacion
+	DatosDeEstadisticas puntaje
 	
 	new(int jugadas, int ganadas, int kills, int deads, int assists , Ubicacion mejorUbicacion, String puntaje) {
-		this.jugadas = new Pair("JUGADAS",String.valueOf(jugadas))
-		this.ganadas = new Pair("JUGADAS",String.valueOf(ganadas))
-		this.kills = new Pair("JUGADAS",String.valueOf(kills))
-		this.deads = new Pair("JUGADAS",String.valueOf(deads))
-		this.assists = new Pair("JUGADAS",String.valueOf(assists))
-		this.mejorUbicacion = new Pair("JUGADAS",String.valueOf(String.valueOf(mejorUbicacion).toLowerCase))
-		this.puntaje = new Pair("JUGADAS",String.valueOf(puntaje))
+		this.jugadas = new DatosDeEstadisticas("JUGADAS",String.valueOf(jugadas))
+		this.ganadas = new DatosDeEstadisticas("GANADAS",String.valueOf(ganadas))
+		this.kills = new DatosDeEstadisticas("KILLS",String.valueOf(kills))
+		this.deads = new DatosDeEstadisticas("DEADS",String.valueOf(deads))
+		this.assists = new DatosDeEstadisticas("ASSISTS",String.valueOf(assists))
+		this.mejorUbicacion = new DatosDeEstadisticas("MEJOR UBICACION",String.valueOf(String.valueOf(mejorUbicacion).toLowerCase))
+		this.puntaje = new DatosDeEstadisticas("PUNTAJE",puntaje)
 	}	
 	
 }
