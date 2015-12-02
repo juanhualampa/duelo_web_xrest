@@ -50,11 +50,11 @@ class DatosDueloAppModel {
 		
 		
 		#[new DatosDeEstadisticas("JUGADAS",String.valueOf(vecesUsadoAntesDelDuelo)),
-		new DatosDeEstadisticas("JUGADAS",String.valueOf(vecesKills))
-		,new DatosDeEstadisticas("JUGADAS",String.valueOf(vecesDeads))
-		,new DatosDeEstadisticas("JUGADAS",String.valueOf(vecesAssist))
-		,new DatosDeEstadisticas("JUGADAS",String.valueOf(mejorUbicacion))
-		, new DatosDeEstadisticas("JUGADAS",String.valueOf(String.valueOf(calificacion.categoria).toLowerCase))]
+		new DatosDeEstadisticas("KILLA",String.valueOf(vecesKills))
+		,new DatosDeEstadisticas("DEADS",String.valueOf(vecesDeads))
+		,new DatosDeEstadisticas("ASSISTS",String.valueOf(vecesAssist))
+		,new DatosDeEstadisticas("MEJORUBICACION",String.valueOf(mejorUbicacion))
+		, new DatosDeEstadisticas("PUNTAJE",String.valueOf(String.valueOf(calificacion.categoria).toLowerCase))]
 		
 		
 	}
@@ -163,8 +163,7 @@ class PersonajesMinificados {
 @Accessors
 class DatosDeEstadisticas{
 	
-	String valorDelCampo
-	
+	String valorDelCampo	
 	String nombreDelCampo
 	
 	new (String valorDelCampo, String nombreDelCampo){
